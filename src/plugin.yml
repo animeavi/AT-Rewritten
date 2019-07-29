@@ -8,12 +8,6 @@ softdepend: [Vault]
 
 commands:
 
-  warps:
-    description: Gives you a list of warps.
-    permission: at.member.warps
-  warp:
-    description: Gives you a list of sub commands from this command.
-    permission: at.member.warp
   tpr:
     description: Teleports you to a random place.
     permission: at.member.tpr
@@ -109,8 +103,6 @@ permissions:
       at.member.here: true
       at.member.help: true
       at.member.list: true
-      at.member.warp: true
-      at.member.warps: true
       at.member.spawn: true
       at.member.sethome: true
       at.member.delhome: true
@@ -118,9 +110,6 @@ permissions:
       at.member.homes: true
       at.member.tpa: true
       at.member.back: true
-      at.member.spawn.use-sign: true
-      at.member.tpr.use-sign: true
-      at.member.warp.use-sign: true
   at.admin.*:
     default: op
     description: Allows access to admin-based commands of the plugin.
@@ -129,12 +118,7 @@ permissions:
       at.admin.all: true
       at.admin.tpo: true
       at.admin.help: true
-      at.admin.rtpsign: true
-      at.admin.warpset: true
-      at.admin.warpdel: true
-      at.admin.warpsign: true
       at.admin.setspawn: true
-      at.admin.spawnsign: true
       at.admin.reload: true
       at.admin.sethome: true
       at.admin.delhome: true

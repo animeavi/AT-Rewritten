@@ -28,7 +28,6 @@ public class CustomMessages {
         Config.addDefault("Teleport.teleporting", "&aTeleporting to &e{player}&a!");
         Config.addDefault("Teleport.teleportingToHome", "&aTeleporting to &e{home}&a!");
         Config.addDefault("Teleport.teleportingToHomeOther", "&aTeleporting to &e{player}&a's home, &e{home}&a!");
-        Config.addDefault("Teleport.teleportingToWarp", "&aTeleporting you to &e{warp}&a!");
         Config.addDefault("Teleport.teleportingPlayerToSelf", "&aTeleporting &e{player} &ato you!");
         Config.addDefault("Teleport.teleportingSelfToPlayer", "&aTeleporting you to &e{player}&a!");
         Config.addDefault("Teleport.teleportingToRandomPlace", "&aTeleporting you to a random place!");
@@ -64,8 +63,6 @@ public class CustomMessages {
         Config.addDefault("Error.noBedHomeOther", "&a{player} &cdoesn't have a bed spawn set!");
         Config.addDefault("Error.reachedHomeLimit", "&cYou can't set any more homes!");
         Config.addDefault("Error.homeAlreadySet", "&cYou already have a home called &e{home}&c!");
-        Config.addDefault("Error.noWarpInput", "&cYou have to include the warp's name!");
-        Config.addDefault("Error.noSuchWarp", "&cThat warp doesn't exist!");
         Config.addDefault("Error.noSuchWorld", "&cThat world doesn't exist!");
         Config.addDefault("Error.noLocation", "&cYou don't have any location to teleport back to!");
         Config.addDefault("Error.notAPlayer", "&cYou must be a player to run this command!");
@@ -97,20 +94,16 @@ public class CustomMessages {
         Config.addDefault("Info.deletedHome", "&aSuccessfully deleted the home &e{home}&a!");
         Config.addDefault("Info.setHome", "&aSuccessfully set the home &e{home}&a!");
         Config.addDefault("Info.setSpawn", "&aSuccessfully set the spawnpoint!");
-        Config.addDefault("Info.setWarp", "&aSuccessfully set the warp &e{warp}&a!");
-        Config.addDefault("Info.deletedWarp", "&aSuccessfully deleted the warp &e{warp}&a!");
         Config.addDefault("Info.searching", "&aSearching for a location...");
         Config.addDefault("Info.unblockPlayer", "&aSuccessfully unblocked &e{player}&a!");
         Config.addDefault("Info.reloadingConfig", "&aReloading &bAdvancedTeleport&a's config...");
         Config.addDefault("Info.reloadedConfig", "&aFinished reloading the config!");
-        Config.addDefault("Info.warps", "&b&lWarps: &r");
         Config.addDefault("Info.homes", "&b&lHomes: &r");
         Config.addDefault("Info.homesOther", "&b&l{player}'s homes: &r");
         Config.addDefault("Info.requestAccepted", "&aYou've accepted the teleport request!");
         Config.addDefault("Info.requestAcceptedResponder", "&e{player} &ahas accepted the teleport request!");
         Config.addDefault("Info.paymentVault", "&aYou have paid &e${amount} &aand now have &e${balance}&a!");
         Config.addDefault("Info.paymentEXP", "&aYou have paid &e{amount} EXP Levels &aand now have &e{levels}&a!");
-        Config.addDefault("Info.createdWarpSign", "&aSuccessfully created the warp sign!");
         Config.addDefault("Info.createdRTPSign", "&aSuccessfully created the RandomTP sign!");
         Config.addDefault("Info.createdSpawnSign", "&aSuccessfully created the spawn sign!");
         Config.addDefault("Info.tpallRequestSent", "&aSuccessfully sent a teleport request to &e{amount} &aplayer(s)!");
@@ -118,7 +111,6 @@ public class CustomMessages {
                 "&6Please type &b/athelp <category> &6to get a list of commands about this category.",
                 "&6--[ &bCategories &6]--",
                 "&6- Teleport",
-                "&6- Warps",
                 "&6- Spawn",
                 "&6- RandomTP",
                 "&6- HomesCommand")));
@@ -138,11 +130,6 @@ public class CustomMessages {
         Config.addDefault("Help.teleportAdmin", new ArrayList<>(Arrays.asList("&6- /tpo <player> - Instantly teleports you to the player.",
                 "&6- /tpohere <player> - Instantly teleports the player to you.",
                 "&6- /tpall - Sends a teleport request to every online player to teleport to you.")));
-        Config.addDefault("Help.warps", new ArrayList<>(Arrays.asList("&b&lWarps help",
-                "&6- /warp <warp name> - Teleports you to an existing warp point.",
-                "&6- /warps - Gives you a list of warps.")));
-        Config.addDefault("Help.warpsAdmin", new ArrayList<>(Arrays.asList("&6- /warp set <warp name> - Sets a warp point at your location.",
-                "&6- /warp delete <warp name> - Deletes an existing warp point.")));
         Config.addDefault("Help.spawn", new ArrayList<>(Arrays.asList("&b&lSpawn help",
                 "- /spawn - Teleports you to the spawn point.")));
         Config.addDefault("Help.spawnAdmin", new ArrayList<>(Collections.singletonList("&6- /setspawn - Sets a spawn point at your location.")));

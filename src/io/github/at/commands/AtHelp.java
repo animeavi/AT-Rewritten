@@ -37,21 +37,6 @@ public class AtHelp implements CommandExecutor {
                     sender.sendMessage(CustomMessages.getString("Error.featureDisabled"));
                     return false;
                 }
-            } else if (args[0].equalsIgnoreCase("warps")) {
-                if (Config.isFeatureEnabled("warps")) {
-                    for (String str : CustomMessages.Config.getStringList("Help.warps")) {
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', str));
-                    }
-                    if (sender.hasPermission("at.admin.help")) {
-                        for (String str : CustomMessages.Config.getStringList("Help.warpsAdmin")) {
-                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', str));
-                        }
-                        return false;
-                    }
-                } else {
-                    sender.sendMessage(CustomMessages.getString("Error.featureDisabled"));
-                    return false;
-                }
             } else if (args[0].equalsIgnoreCase("Spawn")) {
                 if (Config.isFeatureEnabled("spawn")) {
                     for (String str : CustomMessages.Config.getStringList("Help.spawn")) {

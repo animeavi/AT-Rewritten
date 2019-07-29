@@ -22,8 +22,6 @@ public class Config {
     public static void setDefaults() throws IOException {
         // Features
         config.addDefault("features.teleport", true);
-        config.addDefault("features.warps", true);
-        config.addDefault("features.spawn", true);
         config.addDefault("features.randomTP", true);
         config.addDefault("features.homes",true);
         // Timers
@@ -32,7 +30,6 @@ public class Config {
         config.addDefault("timers.teleportTimers.tpa", "default");
         config.addDefault("timers.teleportTimers.tpahere", "default");
         config.addDefault("timers.teleportTimers.tpr", "default");
-        config.addDefault("timers.teleportTimers.warp", "default");
         config.addDefault("timers.teleportTimers.spawn", "default");
         config.addDefault("timers.teleportTimers.home", "default");
         config.addDefault("timers.teleportTimers.back", "default");
@@ -71,12 +68,6 @@ public class Config {
         config.addDefault("payments.exp.tpr.price", "default");
         config.addDefault("payments.exp.tpr.enabled", "default");
 
-        // Warp
-        config.addDefault("payments.vault.warp.price", "default");
-        config.addDefault("payments.vault.warp.enabled", "default");
-        config.addDefault("payments.exp.warp.price", "default");
-        config.addDefault("payments.exp.warp.enabled", "default");
-
         // Spawn
         config.addDefault("payments.vault.warp.price", "default");
         config.addDefault("payments.vault.warp.enabled", "default");
@@ -109,7 +100,6 @@ public class Config {
         config.addDefault("distance-limiter.per-command.tpa", true);
         config.addDefault("distance-limiter.per-command.tpahere", true);
         config.addDefault("distance-limiter.per-command.tpr", false);
-        config.addDefault("distance-limiter.per-command.warp", true);
         config.addDefault("distance-limiter.per-command.spawn", true);
         config.addDefault("distance-limiter.per-command.back", true);
       
@@ -209,7 +199,6 @@ public class Config {
     /* This method is used as a replacement for featTP, featWarps, etc. to make checking if the feature is enabled easier.
      * For example:
      * Config.isFeatureEnabled("teleport") - checks if teleports are enabled.
-     * Config.isFeatureEnabled("warps") - checks if warps are enabled.
      * Config.isFeatureEnabled("randomTP") - checks if RTP is enabled.
      * Config.isFeatureEnabled("homes") - checks if homes are enabled.
      * Config.isFeatureEnabled("spawn") - checks if the spawn feature is enabled.
@@ -218,8 +207,6 @@ public class Config {
 
     @Deprecated
     public static boolean featTP() {return config.getBoolean("features.teleport");}
-    @Deprecated
-    public static boolean featWarps() {return config.getBoolean("features.warps");}
     @Deprecated
     public static boolean featSpawn() {return config.getBoolean("features.spawn");}
     @Deprecated

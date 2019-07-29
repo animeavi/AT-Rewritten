@@ -10,10 +10,7 @@ import io.github.at.commands.home.SetHome;
 import io.github.at.commands.spawn.SetSpawn;
 import io.github.at.commands.spawn.SpawnCommand;
 import io.github.at.commands.teleport.*;
-import io.github.at.commands.warp.Warp;
-import io.github.at.commands.warp.WarpsCommand;
 import io.github.at.config.*;
-import io.github.at.events.AtSigns;
 import io.github.at.events.MovementManager;
 import io.github.at.events.TeleportTrackingManager;
 import net.milkbowl.vault.economy.Economy;
@@ -73,13 +70,11 @@ public class Main extends JavaPlugin {
             CustomMessages.setDefaults();
             Homes.save();
             LastLocations.save();
-            Warps.save();
             Spawn.save();
         } catch (IOException e) {
             e.printStackTrace();
         }
         setupEconomy();
-        new Metrics(this);
     }
 
     @Override
@@ -118,17 +113,12 @@ public class Main extends JavaPlugin {
         getCommand("delhome").setExecutor(new DelHome());
         getCommand("homes").setExecutor(new HomesCommand());
 
-        // Warp commands
-        getCommand("warp").setExecutor(new Warp());
-        getCommand("warps").setExecutor(new WarpsCommand());
-
         // Spawn commands
         getCommand("spawn").setExecutor(new SpawnCommand());
         getCommand("setspawn").setExecutor(new SetSpawn());
     }
 
     private void registerEvents() {
-        getServer().getPluginManager().registerEvents(new AtSigns(), this);
         getServer().getPluginManager().registerEvents(new TeleportTrackingManager(), this);
         getServer().getPluginManager().registerEvents(new MovementManager(), this);
     }
