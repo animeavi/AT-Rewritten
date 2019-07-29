@@ -69,10 +69,10 @@ public class Config {
         config.addDefault("payments.exp.tpr.enabled", "default");
 
         // Spawn
-        config.addDefault("payments.vault.warp.price", "default");
-        config.addDefault("payments.vault.warp.enabled", "default");
-        config.addDefault("payments.exp.warp.price", "default");
-        config.addDefault("payments.exp.warp.enabled", "default");
+        config.addDefault("payments.vault.spawn.price", "default");
+        config.addDefault("payments.vault.spawn.enabled", "default");
+        config.addDefault("payments.exp.spawn.price", "default");
+        config.addDefault("payments.exp.spawn.enabled", "default");
 
         // Home
         config.addDefault("payments.vault.home.price", "default");
