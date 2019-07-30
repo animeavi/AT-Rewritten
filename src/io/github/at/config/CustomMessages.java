@@ -26,8 +26,8 @@ public class CustomMessages {
         Config.addDefault("Teleport.eventMovement" , "&cTeleport has been cancelled due to movement.");
         Config.addDefault("Teleport.teleportingToSpawn", "&aTeleporting you to spawn!");
         Config.addDefault("Teleport.teleporting", "&aTeleporting to &e{player}&a!");
-        Config.addDefault("Teleport.teleportingToHome", "&aTeleporting to &e{home}&a!");
-        Config.addDefault("Teleport.teleportingToHomeOther", "&aTeleporting to &e{player}&a's home, &e{home}&a!");
+        Config.addDefault("Teleport.teleportingToHome", "&aTeleporting to your home!");
+        Config.addDefault("Teleport.teleportingToHomeOther", "&aTeleporting to &e{player}&a's home!");
         Config.addDefault("Teleport.teleportingPlayerToSelf", "&aTeleporting &e{player} &ato you!");
         Config.addDefault("Teleport.teleportingSelfToPlayer", "&aTeleporting you to &e{player}&a!");
         Config.addDefault("Teleport.teleportingToRandomPlace", "&aTeleporting you to a random place!");
@@ -62,7 +62,6 @@ public class CustomMessages {
         Config.addDefault("Error.noBedHome", "&cYou don't have any bed spawn set!");
         Config.addDefault("Error.noBedHomeOther", "&a{player} &cdoesn't have a bed spawn set!");
         Config.addDefault("Error.reachedHomeLimit", "&cYou can't set any more homes!");
-        Config.addDefault("Error.homeAlreadySet", "&cYou already have a home called &e{home}&c!");
         Config.addDefault("Error.noSuchWorld", "&cThat world doesn't exist!");
         Config.addDefault("Error.noLocation", "&cYou don't have any location to teleport back to!");
         Config.addDefault("Error.notAPlayer", "&cYou must be a player to run this command!");
@@ -91,8 +90,7 @@ public class CustomMessages {
         Config.addDefault("Info.requestDeclined", "&aYou've declined the teleport request!");
         Config.addDefault("Info.requestDeclinedResponder", "&e{player} &ahas declined your teleport request!");
 
-        Config.addDefault("Info.deletedHome", "&aSuccessfully deleted the home &e{home}&a!");
-        Config.addDefault("Info.setHome", "&aSuccessfully set the home &e{home}&a!");
+        Config.addDefault("Info.setHome", "&aSuccessfully set your home!");
         Config.addDefault("Info.setSpawn", "&aSuccessfully set the spawnpoint!");
         Config.addDefault("Info.searching", "&aSearching for a location...");
         Config.addDefault("Info.unblockPlayer", "&aSuccessfully unblocked &e{player}&a!");
@@ -108,12 +106,12 @@ public class CustomMessages {
         Config.addDefault("Info.createdSpawnSign", "&aSuccessfully created the spawn sign!");
         Config.addDefault("Info.tpallRequestSent", "&aSuccessfully sent a teleport request to &e{amount} &aplayer(s)!");
         Config.addDefault("Help.mainHelp", new ArrayList<>(Arrays.asList("&b&lAdvancedTeleport Help",
-                "&6Please type &b/athelp <category> &6to get a list of commands about this category.",
+                "&6Please type &b/tphelp <category> &6to get a list of commands about this category.",
                 "&6--[ &bCategories &6]--",
                 "&6- Teleport",
                 "&6- Spawn",
                 "&6- RandomTP",
-                "&6- HomesCommand")));
+                "&6- Home")));
         Config.addDefault("Help.mainHelpAdmin", new ArrayList<>(Collections.singletonList("&6- Admin")));
         Config.addDefault("Help.teleport", new ArrayList<>(Arrays.asList("&b&lTeleport help",
                 "&6- /tpa <player> - Sends a request to teleport to the player.",
@@ -136,14 +134,10 @@ public class CustomMessages {
         Config.addDefault("Help.randomTP", new ArrayList<>(Arrays.asList("&b&lRandomTP help",
                 "&6- /rtp - Teleports you to a random location.")));
         Config.addDefault("Help.homes", new ArrayList<>(Arrays.asList("&b&lHomes help",
-                "&6- /sethome <home name> - Sets a home point at your location.",
-                "&6- /delhome <home name> - Deletes a home point you've set.",
-                "&6- /home <home name> - Teleports you to your home.",
-                "&6- /homes - Gives you a list of homes you've set.")));
-        Config.addDefault("Help.homesAdmin", new ArrayList<>(Arrays.asList("&6- /sethome <player> <home name> - Sets a home point at your location for the player.",
-                "&6- /delhome <player> <home name> - Deletes a home point of a player.",
-                "&6- /home <player> <home name> - Teleports you to a home point a player has set.",
-                "&6- /homes <player> - Gives you a list of homes of a player.")));
+                "&6- /sethome - Sets a home point at your location.",
+                "&6- /home - Teleports you to your home.")));
+        Config.addDefault("Help.homesAdmin", new ArrayList<>(Arrays.asList("&6- /sethome <player> - Sets a home point at your location for the player.",
+                "&6- /home <player> - Teleports you to a home point a player has set.")));
         Config.addDefault("Help.admin", new ArrayList<>(Arrays.asList("&b&lAdmin help",
                 "&6- /atinfo - Shows informations about this plugin.",
                 "&6- /atreload - Reloads all configuration files of this plugin.")));

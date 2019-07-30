@@ -20,7 +20,8 @@ public class Homes {
         homes.save(HomesFile);
     }
 
-    public static void setHome(Player player, String homename, Location location) throws IOException {
+    public static void setHome(Player player, Location location) throws IOException {
+        String homename = "home";
         homes.set(player.getUniqueId().toString() + "." + homename + ".x", location.getX());
         homes.set(player.getUniqueId().toString() + "." + homename + ".y", location.getY());
         homes.set(player.getUniqueId().toString() + "." + homename + ".z", location.getZ());
@@ -33,15 +34,14 @@ public class Homes {
     public static HashMap<String,Location> getHomes(Player player){
         HashMap<String,Location> homes = new HashMap<>();
         try {
-            for (String home: Homes.homes.getConfigurationSection(player.getUniqueId().toString()).getKeys(false)) {
-                Location location = new Location(Bukkit.getWorld(Homes.homes.getString(player.getUniqueId().toString() + "." + home + ".world")), // Gets world from name
-                        Homes.homes.getDouble(player.getUniqueId().toString() + "." + home + ".x"), // Gets X value
-                        Homes.homes.getDouble(player.getUniqueId().toString() + "." + home + ".y"), // Gets Y value
-                        Homes.homes.getDouble(player.getUniqueId().toString() + "." + home + ".z"), // Gets Z value
-                        Float.valueOf(String.valueOf(Homes.homes.getDouble(player.getUniqueId().toString() + "." + home + ".yaw"))),
-                        Float.valueOf(String.valueOf(Homes.homes.getDouble(player.getUniqueId().toString() + "." + home + ".pitch"))));
-                homes.put(home,location);
-            }
+            String home = "home";
+            Location location = new Location(Bukkit.getWorld(Homes.homes.getString(player.getUniqueId().toString() + "." + home + ".world")), // Gets world from name
+                    Homes.homes.getDouble(player.getUniqueId().toString() + "." + home + ".x"), // Gets X value
+                    Homes.homes.getDouble(player.getUniqueId().toString() + "." + home + ".y"), // Gets Y value
+                    Homes.homes.getDouble(player.getUniqueId().toString() + "." + home + ".z"), // Gets Z value
+                    Float.valueOf(String.valueOf(Homes.homes.getDouble(player.getUniqueId().toString() + "." + home + ".yaw"))),
+                    Float.valueOf(String.valueOf(Homes.homes.getDouble(player.getUniqueId().toString() + "." + home + ".pitch"))));
+            homes.put(home,location);
         } catch (NullPointerException ex) {
             Homes.homes.createSection(player.getUniqueId().toString());
         }

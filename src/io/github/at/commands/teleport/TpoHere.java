@@ -3,7 +3,6 @@ package io.github.at.commands.teleport;
 import io.github.at.config.Config;
 import io.github.at.config.CustomMessages;
 import io.github.at.events.TeleportTrackingManager;
-import io.github.at.utilities.DistanceLimiter;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

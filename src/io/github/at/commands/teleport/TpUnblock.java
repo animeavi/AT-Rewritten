@@ -13,6 +13,7 @@ import org.bukkit.entity.Player;
 import java.io.IOException;
 
 public class TpUnblock implements CommandExecutor {
+    @SuppressWarnings("deprecation")
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (Config.isFeatureEnabled("teleport")) {

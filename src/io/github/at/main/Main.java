@@ -3,9 +3,7 @@ package io.github.at.main;
 import io.github.at.commands.AtHelp;
 import io.github.at.commands.AtInfo;
 import io.github.at.commands.AtReload;
-import io.github.at.commands.home.DelHome;
 import io.github.at.commands.home.Home;
-import io.github.at.commands.home.HomesCommand;
 import io.github.at.commands.home.SetHome;
 import io.github.at.commands.spawn.SetSpawn;
 import io.github.at.commands.spawn.SpawnCommand;
@@ -86,13 +84,13 @@ public class Main extends JavaPlugin {
     private void registerCommands() {
 
         // Main commands
-        getCommand("athelp").setExecutor(new AtHelp());
+        getCommand("tphelp").setExecutor(new AtHelp());
         getCommand("atreload").setExecutor(new AtReload());
         getCommand("atinfo").setExecutor(new AtInfo());
 
         // TP commands
         getCommand("back").setExecutor(new Back());
-        getCommand("tpa").setExecutor(new Tpa());
+        getCommand("tp").setExecutor(new Tpa());
         getCommand("tpr").setExecutor(new Tpr());
         getCommand("tpoff").setExecutor(new TpOff());
         getCommand("tpon").setExecutor(new TpOn());
@@ -110,8 +108,6 @@ public class Main extends JavaPlugin {
         // Home commands
         getCommand("home").setExecutor(new Home());
         getCommand("sethome").setExecutor(new SetHome());
-        getCommand("delhome").setExecutor(new DelHome());
-        getCommand("homes").setExecutor(new HomesCommand());
 
         // Spawn commands
         getCommand("spawn").setExecutor(new SpawnCommand());

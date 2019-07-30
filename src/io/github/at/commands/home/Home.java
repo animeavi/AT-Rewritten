@@ -18,6 +18,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class Home implements CommandExecutor {
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (Config.isFeatureEnabled("homes")) {
@@ -27,71 +28,33 @@ public class Home implements CommandExecutor {
                     if (args.length>0) {
                         if (Bukkit.getPlayer(args[0]) != null) {
                             if (sender.hasPermission("at.admin.home")) {
-                                if (args.length > 1) {
-                                    Player target = Bukkit.getOfflinePlayer(args[0]).getPlayer();
-                                    try {
-                                        if (Homes.getHomes(target).containsKey(args[1])) {
-                                            Location tlocation = Homes.getHomes(target).get(args[1]);
-                                            TeleportTrackingManager.getLastLocations().put(player, player.getLocation());
-                                            player.teleport(tlocation);
-                                            sender.sendMessage(CustomMessages.getString("Info.teleportingToHomeOther")
-                                                    .replaceAll("\\{player}", target.getName())
-                                                    .replaceAll("\\{home}", args[1]));
-                                            return false;
-                                        } else if (args[1].equalsIgnoreCase("bed")) {
-                                            Location location = player.getBedSpawnLocation();
-                                            if (location == null) {
-                                                player.sendMessage(CustomMessages.getString("Error.noBedHomeOther").replaceAll("\\{player}", target.getName()));
-                                                return false;
-                                            }
-
-                                        } else if (args[1].equalsIgnoreCase("list")) {
-                                            if (sender.hasPermission("at.admin.homes")) {
-                                                StringBuilder hlist = new StringBuilder();
-                                                hlist.append(CustomMessages.getString("Info.homesOther").replaceAll("\\{player}", player.getName()));
-                                                if (Bukkit.getPlayer(args[0]) != null) {
-                                                    try {
-                                                        if (Homes.getHomes(player).size()>0) {
-                                                            for (String home: Homes.getHomes(player).keySet()) {
-                                                                hlist.append(home + ", ");
-                                                            }
-                                                        } else {
-                                                            sender.sendMessage(CustomMessages.getString("Error.noHomesOther").replaceAll("\\{player}", player.getName()));
-                                                            return false;
-                                                        }
-
-                                                    } catch (NullPointerException ex) {
-                                                        sender.sendMessage(CustomMessages.getString("Error.noHomesOther").replaceAll("\\{player}", player.getName()));
-                                                        return false;
-                                                    }
-                                                    sender.sendMessage(hlist.toString());
-                                                    return false;
-                                                }
-                                            }
-                                        } else {
-                                            sender.sendMessage(CustomMessages.getString("Error.noSuchHome"));
-                                            return false;
-                                        }
-                                    } catch (NullPointerException ex) {
+                                Player target = Bukkit.getOfflinePlayer(args[0]).getPlayer();
+                                try {
+                                    if (Homes.getHomes(target).containsKey(args[1])) {
                                         Location tlocation = Homes.getHomes(target).get(args[1]);
                                         TeleportTrackingManager.getLastLocations().put(player, player.getLocation());
                                         player.teleport(tlocation);
-                                        sender.sendMessage(CustomMessages.getString("Teleport.teleportingToHomeOther")
-                                                .replaceAll("\\{player}", target.getName().replaceAll("\\{home}", args[1])));
+                                        sender.sendMessage(CustomMessages.getString("Info.teleportingToHomeOther")
+                                                .replaceAll("\\{player}", target.getName()));
                                         return false;
                                     }
-                                } else {
-                                    sender.sendMessage(CustomMessages.getString("Error.noHomeInput"));
+                                } catch (NullPointerException ex) {
+                                    Location tlocation = Homes.getHomes(target).get(args[1]);
+                                    TeleportTrackingManager.getLastLocations().put(player, player.getLocation());
+                                    player.teleport(tlocation);
+                                    sender.sendMessage(CustomMessages.getString("Teleport.teleportingToHomeOther")
+                                            .replaceAll("\\{player}", target.getName()));
                                     return false;
                                 }
                             }
                         }
+                    } else {
                         if (PaymentManager.canPay("home", player)) {
                             try {
-                                if (Homes.getHomes(player).containsKey(args[0])) {
-                                    Location location = Homes.getHomes(player).get(args[0]);
+                                if (Homes.getHomes(player).containsKey("home")) {
+                                    Location location = Homes.getHomes(player).get("home");
                                     TeleportTrackingManager.getLastLocations().put(player, player.getLocation());
-                                    teleport(player, location, args[0]);
+                                    teleport(player, location);
                                     return false;
                                 } else if (args[0].equalsIgnoreCase("bed")) {
                                     Location location = player.getBedSpawnLocation();
@@ -100,38 +63,16 @@ public class Home implements CommandExecutor {
                                         return false;
                                     }
                                     TeleportTrackingManager.getLastLocations().put(player, player.getLocation());
-                                    teleport(player, location, args[0]);
+                                    teleport(player, location);
                                     return false;
 
-                                } else if (args[0].equalsIgnoreCase("list")) {
-                                    StringBuilder hlist = new StringBuilder();
-                                    hlist.append(CustomMessages.getString("Info.homes"));
-                                    try {
-                                        if (Homes.getHomes(player).size()>0){
-                                            for (String home: Homes.getHomes(player).keySet()) {
-                                                hlist.append(home + ", ");
-                                            }
-                                        } else {
-                                            sender.sendMessage(CustomMessages.getString("Error.noHomes"));
-                                            return false;
-                                        }
-                                    } catch (NullPointerException ex) { // If a player has never set any homes
-                                        sender.sendMessage(CustomMessages.getString("Error.noHomes"));
-                                        return false;
-                                    }
-                                    sender.sendMessage(hlist.toString());
-                                } else {
-                                    sender.sendMessage(CustomMessages.getString("Error.noSuchHome"));
                                 }
                             } catch (NullPointerException ex) {
-                                Location location = Homes.getHomes(player).get(args[0]);
-                                teleport(player, location, args[0]);
+                                Location location = Homes.getHomes(player).get("home");
+                                teleport(player, location);
                                 return false;
                             }
                         }
-
-                    } else {
-                        sender.sendMessage(CustomMessages.getString("Error.noHomeInput"));
                         return false;
                     }
                 } else {
@@ -145,7 +86,7 @@ public class Home implements CommandExecutor {
         return false;
     }
 
-    private void teleport(Player player, Location loc, String name) {
+    private void teleport(Player player, Location loc) {
         if (!DistanceLimiter.canTeleport(player.getLocation(), loc, "home") && !player.hasPermission("at.admin.bypass.distance-limit")) {
             player.sendMessage(CustomMessages.getString("Error.tooFarAway"));
             return;
@@ -155,7 +96,7 @@ public class Home implements CommandExecutor {
                 BukkitRunnable movementtimer = new BukkitRunnable() {
                     @Override
                     public void run() {
-                        player.sendMessage(CustomMessages.getString("Teleport.teleportingToHome").replaceAll("\\{home}",name));
+                        player.sendMessage(CustomMessages.getString("Teleport.teleportingToHome"));
                         TeleportTrackingManager.getLastLocations().put(player, player.getLocation());
                         player.teleport(loc);
                         MovementManager.getMovement().remove(player);
@@ -167,7 +108,7 @@ public class Home implements CommandExecutor {
                 player.sendMessage(CustomMessages.getString("Teleport.eventBeforeTP").replaceAll("\\{countdown}", String.valueOf(Config.getTeleportTimer("home"))));
 
             } else {
-                player.sendMessage(CustomMessages.getString("Teleport.teleportingToHome").replaceAll("\\{home}",name));
+                player.sendMessage(CustomMessages.getString("Teleport.teleportingToHome"));
                 TeleportTrackingManager.getLastLocations().put(player, player.getLocation());
                 player.teleport(loc);
                 PaymentManager.withdraw("home", player);

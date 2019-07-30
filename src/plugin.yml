@@ -1,6 +1,6 @@
 main: io.github.at.main.Main
 name: AdvancedTeleport
-version: 5.0.0
+version: 5.1.0
 description: A plugin which is based on tons of teleport stuff.
 authors: [Niestrat99,Thatsmusic99]
 softdepend: [Vault]
@@ -48,12 +48,14 @@ commands:
   tpahere:
     description: Sends the targeted player a teleport requests to where you are.
     permission: at.member.here
-  tpa:
+  tp:
     description: Sends the targeted player a teleport request to where they are.
     permission: at.member.tpa
-  athelp:
+    aliases: tpa
+  tphelp:
     description: Sends you a list of commands.
     permission: at.member.help
+    aliases: athelp
   tpalist:
     description: Lists your teleport requests.
     permission: at.member.list
@@ -69,15 +71,9 @@ commands:
   sethome:
     description: Sets a home point at your location.
     permission: at.member.sethome
-  delhome:
-    description: Deletes a home point you've set.
-    permission: at.member.delhome
   home:
     description: Sends you to your home point.
     permission: at.member.home
-  homes:
-    description: Gives a list of homes you've set.
-    permission: at.member.homes
   back:
     description: Teleports you to your last location.
     permission: at.member.back
@@ -105,9 +101,7 @@ permissions:
       at.member.list: true
       at.member.spawn: true
       at.member.sethome: true
-      at.member.delhome: true
       at.member.home: true
-      at.member.homes: true
       at.member.tpa: true
       at.member.back: true
   at.admin.*:
@@ -121,8 +115,6 @@ permissions:
       at.admin.setspawn: true
       at.admin.reload: true
       at.admin.sethome: true
-      at.admin.delhome: true
-      at.admin.homes: true
       at.admin.home: true
       at.admin.info: true
       at.admin.bypass.distance-limit: true

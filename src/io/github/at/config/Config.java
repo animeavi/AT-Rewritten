@@ -22,11 +22,12 @@ public class Config {
     public static void setDefaults() throws IOException {
         // Features
         config.addDefault("features.teleport", true);
+        config.addDefault("features.spawn", true);
         config.addDefault("features.randomTP", true);
         config.addDefault("features.homes",true);
         // Timers
         config.addDefault("timers.commandCooldown",5);
-        config.addDefault("timers.teleportTimer",1);
+        config.addDefault("timers.teleportTimer",0);
         config.addDefault("timers.teleportTimers.tpa", "default");
         config.addDefault("timers.teleportTimers.tpahere", "default");
         config.addDefault("timers.teleportTimers.tpr", "default");
