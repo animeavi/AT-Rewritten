@@ -26,7 +26,7 @@ public class Config {
         config.addDefault("features.homes",true);
         // Timers
         config.addDefault("timers.commandCooldown",5);
-        config.addDefault("timers.teleportTimer",3);
+        config.addDefault("timers.teleportTimer",1);
         config.addDefault("timers.teleportTimers.tpa", "default");
         config.addDefault("timers.teleportTimers.tpahere", "default");
         config.addDefault("timers.teleportTimers.tpr", "default");
@@ -34,7 +34,7 @@ public class Config {
         config.addDefault("timers.teleportTimers.home", "default");
         config.addDefault("timers.teleportTimers.back", "default");
       
-        config.addDefault("timers.requestLifetime",60);
+        config.addDefault("timers.requestLifetime",120);
         config.addDefault("timers.cancel-on-rotate", false);
         // Booleans
         config.addDefault("booleans.useVault" , false);
